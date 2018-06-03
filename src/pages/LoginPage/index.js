@@ -2,16 +2,24 @@ import React from 'react'
 import styles from './styles.css'
 import classNames from 'classnames/bind'
 import { Form } from 'semantic-ui-react'
+import { history } from '../../services'
+import { signInAction } from '../../actions/env'
+import { connect } from 'react-redux'
 
-let cx = classNames.bind(styles)
+const cx = classNames.bind(styles)
 
 class LoginPage extends React.Component {
-  state = { username: '', password: '', submittedName: '', submittedEmail: '' }
+  state = { username: '', password: '', submittedName: '', submittedEmail: '', error: null }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleSubmit = () => {
-    const { username, password } = this.state
+    console.log(this.state)
+    const { username, password } = this.state;
+    if(username === 'admin' && password ==='1234') {
+      this.props.signIn({ username, password });
+      history.push('/admin')
+    }
   }
 
   render () {
@@ -19,17 +27,15 @@ class LoginPage extends React.Component {
 
     return (
       <div className={cx('wrapper')}>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-          <Form.Field>
-            <label>Username</label>
-            <Form.input placeholder='Username' name="username" value={username} onChange={this.handleChange} />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <Form.input placeholder='Password' name="password" value={password} onChange={this.handleChange} />
-          </Form.Field>
-          <Form.Button type='submit'>Submit</Form.Button>
+            <Form.Input label='Username' placeholder='Username' name="username" value={username} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Input label='Password' placeholder='Password' name="password" value={password} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Button content='Submit' />
           </Form.Group>
         </Form>
       </div>
@@ -37,4 +43,8 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage
+const mapDispatchToProps = {
+  signIn: signInAction,
+}
+
+export default connect(null, mapDispatchToProps)(LoginPage)
