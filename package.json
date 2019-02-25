@@ -6,16 +6,17 @@
     "classnames": "^2.2.5",
     "history": "^4.7.2",
     "moment": "^2.22.2",
-    "qrcode.react": "^0.8.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
+    "qrcode.react": "^0.9.3",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.5",
     "redux": "^4.0.0",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.80.2",
+    "semantic-ui-less": "^2.4.1",
+    "semantic-ui-react": "^0.85.0",
     "uuid": "^3.2.1"
   },
   "scripts": {
@@ -25,11 +26,16 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
     "redux-devtools-extension": "^2.13.2",
     "standard": "*"
   },
   "standard": {
     "parser": "babel-eslint"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
